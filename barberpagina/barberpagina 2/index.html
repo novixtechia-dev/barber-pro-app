@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro — O sistema definitivo para sua barbearia</title>
+    <meta name="description" content="Transforme sua barbearia num negócio que roda sozinho: agendamentos automáticos, gestão financeira, comissões e lembretes para clientes.">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts: Inter (Body) & Playfair Display (Headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Ambient background effects -->
+    <div class="grid-backdrop"></div>
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="logobarber2.webp" alt="BarberPro" style="height: 56px; width: auto; object-fit: contain;">
+            </div>
+            <div class="nav-menu-wrapper">
+                <ul class="nav-links">
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#crescimento">Como funciona</a></li>
+                    <li><a href="#calculadora">Simulador</a></li>
+                    <li><a href="#precos">Preços</a></li>
+                    <li><a href="#faq">Dúvidas</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-ghost">Entrar</a>
+                    <a href="https://wa.me/5571992790778?text=Ol%C3%A1%2C%20gostaria%20de%20assinar%20o%20BarberPro!" target="_blank" class="btn-primary">Assinar BarberPro</a>
+                </div>
+            </div>
+            <button class="mobile-menu-btn"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg-elements">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+        </div>
+        
+        <div class="container relative-z">
+            <div class="hero-content">
+                <h1 class="hero-title">O PADRÃO OURO NA GESTÃO DE <span class="text-gradient">BARBEARIAS</span></h1>
+                <p class="hero-subtitle">Agenda cheia, financeiro blindado e comissões calculadas no automático. Liberte-se das planilhas e foque no que importa: o corte perfeito e a experiência do seu cliente.</p>
+                
+                <div class="hero-cta">
+                    <a href="https://wa.me/5571992790778?text=Ol%C3%A1%2C%20quero%20elevar%20o%20n%C3%ADvel%20da%20minha%20barbearia%20com%20o%20BarberPro!" target="_blank" class="btn-primary btn-large">Eleve o nível da sua barbearia <i data-lucide="arrow-right"></i></a>
+                    <a href="https://barberpro-nu.vercel.app/" target="_blank" class="btn-secondary btn-large">Acessar o App</a>
+                </div>
+                
+                <div class="hero-trust">
+                    <div class="avatars">
+                        <img src="https://i.pravatar.cc/100?img=11" alt="User">
+                        <img src="https://i.pravatar.cc/100?img=33" alt="User">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="User">
+                        <img src="https://i.pravatar.cc/100?img=59" alt="User">
+                    </div>
+                    <p>Mais de <strong>2.000</strong> cavalheiros confiam em nós</p>
+                </div>
+
+            </div>
+
+            <!-- 1. VSL Section (Wistia/YouTube) -->
+            <div id="vsl" class="vsl-wrapper reveal active">
+                <div class="vsl-container">
+                    <div class="video-responsive">
+                        <iframe src="https://fast.wistia.net/embed/iframe/b6st9fl7sl" title="BarberPro VSL" allow="autoplay; fullscreen" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" msallowfullscreen width="100%" height="100%"></iframe>
+                        <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+                        <!-- FIM DO CÓDIGO DO VÍDEO -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Title "DADOS ESTATISTICOS" -->
+            <div class="stats-header reveal" style="text-align: center; margin-top: 60px; margin-bottom: 30px;">
+                <h2 class="section-title">DADOS <span class="text-gradient">ESTATÍSTICOS</span></h2>
+            </div>
+
+            <!-- 3. Images (macbook.png) -->
+            <div class="mockup-wrapper reveal" style="margin-top: 0;">
+                <div class="mockup-container">
+                    <!-- Image provided by user -->
+                    <img src="macbook.png" alt="BarberPro no MacBook e iPhone" class="mockup-img" onerror="this.src='https://via.placeholder.com/1200x800/f8f6f2/ea580c?text=macbook.png+missing'">
+                </div>
+            </div>
+
+            <!-- 4. Data (.hero-stats) -->
+            <div class="hero-stats reveal" style="margin-top: 60px;">
+                <div class="hero-stat group">
+                    <div class="hero-stat-value text-gradient">236 mil</div>
+                    <div class="hero-stat-label">Novos negócios<br>de beleza em 2025</div>
+                </div>
+                
+                <div class="hero-stat group">
+                    <div class="hero-stat-value text-gradient">18,5%</div>
+                    <div class="hero-stat-label">Crescimento<br>do setor</div>
+                </div>
+                
+                <div class="hero-stat group">
+                    <div class="hero-stat-value text-gradient">53%</div>
+                    <div class="hero-stat-label">Ainda não usam<br>aplicativo de gestão</div>
+                </div>
+                
+                <div class="hero-stat group">
+                    <div class="hero-stat-value text-gradient">100%</div>
+                    <div class="hero-stat-label">Controle da agenda<br>em um só lugar</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- Orbit Widget Section -->
+    <section id="orbit" class="features" style="background: #0e0d0c; overflow: hidden; padding: 60px 0;">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" style="color: #fff;">O Ecossistema <span class="text-gradient">BarberPro</span></h2>
+                <p class="section-subtitle" style="color: var(--bb-muted);">Tudo conectado. Tudo inteligente.</p>
+            </div>
+            <div class="bb-feature-split-media">
+  <div class="bb-orbit-wrapper" id="bb-orbit-wrapper">
+    <canvas id="bb-neural-canvas"></canvas>
+
+    <div class="bb-center-hub">
+      <span class="bb-pulse-ring"></span>
+      <span class="bb-pulse-ring bb-delay-1"></span>
+      <svg class="bb-hub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="6" r="3"></circle>
+        <circle cx="6" cy="18" r="3"></circle>
+        <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+        <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+        <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+      </svg>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:50%; --y:12%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Agendar Horário"
+           data-desc="Seu cliente escolhe o dia, o barbeiro e o horário direto pelo WhatsApp, só mandando uma mensagem ou um áudio. Sem app, sem ligação, sem enrolação."
+           data-items="Agendamento por voz ou texto|Confirmação automática na hora|Sincronização com a agenda da barbearia">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line><path d="m9 16 2 2 4-4"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Agendar<br>Horário</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:86%; --y:30%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Fila de Espera"
+           data-desc="Chega sem hora marcada? O cliente entra na fila virtual pelo WhatsApp e acompanha em tempo real quanto falta pra ser chamado, sem precisar ficar esperando dentro da barbearia."
+           data-items="Entrada na fila em segundos|Posição e tempo estimado ao vivo|Aviso automático quando estiver perto da vez">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <span class="bb-card-text">Fila de<br>Espera</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:86%; --y:70%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Pagamento Rápido"
+           data-desc="Depois do corte, o cliente recebe o link de pagamento direto no WhatsApp. Pix, cartão ou pacote de mensalidade, tudo registrado automaticamente no financeiro da barbearia."
+           data-items="Link de pagamento gerado na hora|Pix, cartão e pacotes mensais|Baixa automática no financeiro">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Pagamento<br>Rápido</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:50%; --y:88%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Histórico de Cortes"
+           data-desc="Cada corte, produto usado e preferência do cliente fica salvo automaticamente. O barbeiro consulta pelo WhatsApp antes do atendimento e nunca mais pergunta 'como você corta mesmo?'."
+           data-items="Registro automático de cada visita|Preferências e observações por cliente|Consulta rápida por voz antes do atendimento">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Histórico<br>de Cortes</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:14%; --y:70%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Lembrete de Corte"
+           data-desc="O sistema sabe quanto tempo seu cliente costuma ficar sem cortar e manda um lembrete na hora certa pelo WhatsApp, trazendo ele de volta pra cadeira sem você precisar cobrar ninguém."
+           data-items="Ciclo de corte calculado por cliente|Lembrete automático no WhatsApp|Botão de reagendar direto na mensagem">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Lembrete<br>de Corte</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:14%; --y:30%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Avaliação do Cliente"
+           data-desc="Logo após o atendimento, o cliente recebe uma mensagem pedindo pra avaliar o corte. Você acompanha a nota de cada barbeiro e identifica rápido o que precisa melhorar."
+           data-items="Pesquisa automática pós-atendimento|Nota por barbeiro e por serviço|Alerta imediato em caso de nota baixa">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <span class="bb-card-text">Avaliação do<br>Cliente</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bb-modal-overlay" id="bb-modal-overlay" onclick="bbCloseModal(event)">
+  <div class="bb-modal">
+    <button class="bb-modal-close" onclick="bbCloseModal(event)">×</button>
+    <h3 id="bb-modal-title"></h3>
+    <p id="bb-modal-desc"></p>
+    <ul id="bb-modal-items"></ul>
+  </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Features Section (Bento Grid) -->
+    <section id="recursos" class="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">O Arsenal Completo do <span class="text-gradient">Barbeiro Moderno</span></h2>
+                <p class="section-subtitle">Tudo o que você precisa para uma operação afiada, em uma única plataforma.</p>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Large Card -->
+                <div class="bento-card large reveal glass-panel">
+                    <div class="feature-icon-wrapper">
+                        <i data-lucide="calendar-clock"></i>
+                    </div>
+                    <div class="bento-content">
+                        <h3>Agendamento 24h & Sincronização Inteligente</h3>
+                        <p>Seus clientes marcam o próprio horário através de um link exclusivo e elegante. A agenda é atualizada em tempo real para toda a equipe, eliminando conflitos e a dependência de responder mensagens no WhatsApp.</p>
+                    </div>
+                </div>
+                
+                <!-- Medium Card -->
+                <div class="bento-card medium reveal glass-panel" style="transition-delay: 0.1s">
+                    <div class="feature-icon-wrapper">
+                        <i data-lucide="calculator"></i>
+                    </div>
+                    <div class="bento-content">
+                        <h3>Comissões e Fechamento Sem Erro</h3>
+                        <p>O sistema divide automaticamente a parte da casa e do barbeiro a cada corte. O fechamento do caixa no fim do dia leva literalmente um clique.</p>
+                    </div>
+                </div>
+
+                <!-- Small Card -->
+                <div class="bento-card small reveal glass-panel" style="transition-delay: 0.2s">
+                    <div class="feature-icon-wrapper">
+                        <i data-lucide="message-square"></i>
+                    </div>
+                    <div class="bento-content">
+                        <h3>Retenção IA</h3>
+                        <p>Lembretes automáticos para os esquecidos. Encha a cadeira vazia.</p>
+                    </div>
+                </div>
+
+                <!-- Small Card -->
+                <div class="bento-card small reveal glass-panel" style="transition-delay: 0.3s">
+                    <div class="feature-icon-wrapper">
+                        <i data-lucide="pie-chart"></i>
+                    </div>
+                    <div class="bento-content">
+                        <h3>Dashboard Financeiro</h3>
+                        <p>Controle absoluto de entradas, saídas e lucro no seu bolso.</p>
+                        
+                        <!-- Trend Line -->
+                        <div id="growth-panel" style="margin-top: 16px; opacity: 0; transform: translateY(10px); transition: all 0.6s ease;">
+                            <svg viewBox="0 0 100 40" style="width: 100%; height: auto; overflow: visible;">
+                                <path id="trend-line" d="M 0 35 L 15 25 L 30 28 L 45 15 L 60 18 L 75 5 L 90 8 L 100 2" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="100" cy="2" r="3" fill="var(--accent-color)" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Large Card (Horizontal) -->
+                <div class="bento-card large-horizontal reveal glass-panel" style="transition-delay: 0.4s">
+                    <div class="bento-layout-flex">
+                        <div class="bento-text-side">
+                            <div class="feature-icon-wrapper">
+                                <i data-lucide="smartphone"></i>
+                            </div>
+                            <h3>Experiência Premium no Celular</h3>
+                            <p>Tanto para o gestor quanto para o cliente. Um aplicativo web leve, rápido e com design que valoriza a marca da sua barbearia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section (ROI) -->
+    <section id="calculadora" class="calculator-section">
+        <div class="container">
+            <div class="calculator-layout glass-panel reveal">
+                <div class="calc-content">
+                    <h2 class="section-title">O preço de <span class="text-gradient">não usar</span> o BarberPro</h2>
+                    <p>Sistemas antigos cobram taxas por agendamento e mensalidades confusas. Ajuste os números da sua barbearia abaixo e veja o lucro extra imediato.</p>
+                    
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <label for="cuts-slider">Cortes e Serviços ao mês</label>
+                            <span class="slider-value text-accent" id="cuts-value">800</span>
+                        </div>
+                        <input type="range" id="cuts-slider" min="100" max="3000" step="50" value="800" class="modern-slider">
+                    </div>
+
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <label for="ticket-slider">Ticket Médio (R$)</label>
+                            <span class="slider-value text-accent" id="ticket-value">R$ 50,00</span>
+                        </div>
+                        <input type="range" id="ticket-slider" min="20" max="150" step="5" value="50" class="modern-slider">
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <div class="competitor-result">
+                        <div class="result-info">
+                            <h4>Custo em outros sistemas</h4>
+                            <p class="calc-desc">Mensalidade média + taxa de conveniência</p>
+                        </div>
+                        <div class="amount" id="competitor-cost">R$ 900,00</div>
+                    </div>
+
+                    <div class="barberpro-result">
+                        <div class="result-info">
+                            <h4>Retorno Garantido</h4>
+                            <p class="calc-desc">Dinheiro que volta para a barbearia</p>
+                        </div>
+                        <div class="amount" id="barberpro-savings">+ R$ 750,00</div>
+                    </div>
+                    <div class="annual-savings">Economia projetada em 1 ano: <strong id="annual-savings">R$ 9.000,00</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section (Comparison Table) -->
+    <section id="precos" class="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Um investimento, não um custo</h2>
+                <p class="section-subtitle">Escolha o plano que acompanha o tamanho da sua ambição.</p>
+            </div>
+
+            <div class="pricing-comparison reveal">
+                <!-- Plan 1 -->
+                <div class="pricing-card glass-panel">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <p>Para barbeiros independentes e estúdios enxutos.</p>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="value">39</span>
+                            <span class="period">,90/mês</span>
+                        </div>
+                        <a href="https://wa.me/5571992790778?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Plano%20Starter%20do%20BarberPro." target="_blank" class="btn-secondary w-full">Assinar Starter</a>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i data-lucide="check" class="text-accent"></i> 1 Barbeiro ativo</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Agendamentos ilimitados</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Relatórios financeiros básicos</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Suporte por email</li>
+                            <li class="disabled"><i data-lucide="minus"></i> Gestão de comissões avançada</li>
+                            <li class="disabled"><i data-lucide="minus"></i> Lembretes automáticos via IA</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Plan 2 (Highlighted) -->
+                <div class="pricing-card highlighted glass-panel">
+                    <div class="popular-badge">Mais Escolhido</div>
+                    <div class="pricing-header">
+                        <h3>Business</h3>
+                        <p>Para barbearias de alto fluxo e equipes.</p>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="value">67</span>
+                            <span class="period">,90/mês</span>
+                        </div>
+                        <a href="https://wa.me/5571992790778?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Plano%20Business%20do%20BarberPro." target="_blank" class="btn-primary w-full">Assinar Business</a>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i data-lucide="check" class="text-accent"></i> Até 5 Barbeiros</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Agendamentos ilimitados</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Divisão de comissões automática</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Lembretes automáticos via WhatsApp</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Dashboard analítico completo</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Suporte prioritário via WhatsApp</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Plan 3 (Elite) -->
+                <div class="pricing-card glass-panel">
+                    <div class="pricing-header">
+                        <h3>Elite</h3>
+                        <p>A solução definitiva para grandes redes.</p>
+                        <div class="price">
+                            <span class="currency">R$</span>
+                            <span class="value">97</span>
+                            <span class="period">,00/mês</span>
+                        </div>
+                        <a href="https://wa.me/5571992790778?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Plano%20Elite%20do%20BarberPro." target="_blank" class="btn-secondary w-full">Assinar Elite</a>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i data-lucide="check" class="text-accent"></i> Tudo do plano Business</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Múltiplas unidades (Franquias)</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Integração com maquininhas</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Aplicativo White Label (Sua Marca)</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Gerente de conta exclusivo</li>
+                            <li><i data-lucide="check" class="text-accent"></i> Suporte 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <p class="section-subtitle">Tudo o que você precisa saber antes de assinar.</p>
+            </div>
+
+            <div class="faq-grid reveal">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Preciso instalar alguma coisa no meu computador?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não. O BarberPro roda 100% na nuvem. Você acessa pelo navegador do seu celular, tablet, Mac ou PC, com tudo sincronizado em tempo real.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como funciona o repasse das comissões?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Você define a porcentagem de cada barbeiro (por serviço ou geral). A cada corte pago, o sistema já separa o valor e te dá o fechamento diário, semanal ou mensal mastigado.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O cliente precisa baixar um app para agendar?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>De forma alguma. Eles clicam no seu link exclusivo (que fica no Instagram ou WhatsApp), escolhem o barbeiro, o serviço e o horário em menos de 30 segundos, direto pelo navegador.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Posso testar antes de pagar?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim. Oferecemos 7 dias de garantia incondicional. Se não se adaptar à ferramenta, devolvemos 100% do seu investimento com apenas um clique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-card glass-panel reveal">
+                <h2 class="playfair">A evolução da sua barbearia começa hoje</h2>
+                <p>Pare de perder tempo com tarefas repetitivas e foque no crescimento do seu espaço. Junte-se à elite da barbearia brasileira.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5571992790778?text=Ol%C3%A1%2C%20quero%20assinar%20o%20BarberPro%20agora%20mesmo!" target="_blank" class="btn-primary btn-large">Assinar BarberPro Agora</a>
+                </div>
+                <div class="secure-badge">
+                    <i data-lucide="shield-check"></i> 7 dias de garantia incondicional. Cancelamento fácil.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="logobarber2.webp" alt="BarberPro" style="height: 72px; width: auto; object-fit: contain; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.1));">
+                    </div>
+                    <p class="footer-desc">O software definitivo para gestão de barbearias de alto padrão. Agendamentos, comissões e faturamento em um só lugar.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Produto</h4>
+                    <ul>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#precos">Preços</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#vsl">Vídeo de Apresentação</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Fale com Vendas</a></li>
+                        <li><a href="#">WhatsApp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BarberPro. Todos os direitos reservados.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

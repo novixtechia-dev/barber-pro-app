@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barber Orbit Widget v2</title>
+<style>
+  body { margin:0; background:#0e0d0c; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px; box-sizing:border-box; }
+</style>
+</head>
+<body>
+
+<!-- ==========================================================
+     COMPONENTE: bb-orbit-wrapper (v2 - corrigido)
+     - Cards sempre retos (não rotacionam com o ângulo)
+     - Posições em % -> escalam sozinhas em qualquer tela
+     - Canvas recalcula os pontos no resize (fica preciso no mobile)
+     Cole HTML + CSS + JS direto na sua landing page.
+     ========================================================== */-->
+
+<div class="bb-feature-split-media">
+  <div class="bb-orbit-wrapper" id="bb-orbit-wrapper">
+    <canvas id="bb-neural-canvas"></canvas>
+
+    <div class="bb-center-hub">
+      <span class="bb-pulse-ring"></span>
+      <span class="bb-pulse-ring bb-delay-1"></span>
+      <svg class="bb-hub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="6" r="3"></circle>
+        <circle cx="6" cy="18" r="3"></circle>
+        <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+        <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+        <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+      </svg>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:50%; --y:12%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Agendar Horário"
+           data-desc="Seu cliente escolhe o dia, o barbeiro e o horário direto pelo WhatsApp, só mandando uma mensagem ou um áudio. Sem app, sem ligação, sem enrolação."
+           data-items="Agendamento por voz ou texto|Confirmação automática na hora|Sincronização com a agenda da barbearia">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line><path d="m9 16 2 2 4-4"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Agendar<br>Horário</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:86%; --y:30%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Fila de Espera"
+           data-desc="Chega sem hora marcada? O cliente entra na fila virtual pelo WhatsApp e acompanha em tempo real quanto falta pra ser chamado, sem precisar ficar esperando dentro da barbearia."
+           data-items="Entrada na fila em segundos|Posição e tempo estimado ao vivo|Aviso automático quando estiver perto da vez">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <span class="bb-card-text">Fila de<br>Espera</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:86%; --y:70%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Pagamento Rápido"
+           data-desc="Depois do corte, o cliente recebe o link de pagamento direto no WhatsApp. Pix, cartão ou pacote de mensalidade, tudo registrado automaticamente no financeiro da barbearia."
+           data-items="Link de pagamento gerado na hora|Pix, cartão e pacotes mensais|Baixa automática no financeiro">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Pagamento<br>Rápido</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:50%; --y:88%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Histórico de Cortes"
+           data-desc="Cada corte, produto usado e preferência do cliente fica salvo automaticamente. O barbeiro consulta pelo WhatsApp antes do atendimento e nunca mais pergunta 'como você corta mesmo?'."
+           data-items="Registro automático de cada visita|Preferências e observações por cliente|Consulta rápida por voz antes do atendimento">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Histórico<br>de Cortes</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:14%; --y:70%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Lembrete de Corte"
+           data-desc="O sistema sabe quanto tempo seu cliente costuma ficar sem cortar e manda um lembrete na hora certa pelo WhatsApp, trazendo ele de volta pra cadeira sem você precisar cobrar ninguém."
+           data-items="Ciclo de corte calculado por cliente|Lembrete automático no WhatsApp|Botão de reagendar direto na mensagem">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+        </div>
+        <span class="bb-card-text">Lembrete<br>de Corte</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+    <div class="bb-orbit-item" style="--x:14%; --y:30%;">
+      <div class="bb-orbit-card" onclick="bbOpenModal(this)" role="button" tabindex="0"
+           data-title="Avaliação do Cliente"
+           data-desc="Logo após o atendimento, o cliente recebe uma mensagem pedindo pra avaliar o corte. Você acompanha a nota de cada barbeiro e identifica rápido o que precisa melhorar."
+           data-items="Pesquisa automática pós-atendimento|Nota por barbeiro e por serviço|Alerta imediato em caso de nota baixa">
+        <div class="bb-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <span class="bb-card-text">Avaliação do<br>Cliente</span>
+        <span class="bb-card-arrow">›</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bb-modal-overlay" id="bb-modal-overlay" onclick="bbCloseModal(event)">
+  <div class="bb-modal">
+    <button class="bb-modal-close" onclick="bbCloseModal(event)">×</button>
+    <h3 id="bb-modal-title"></h3>
+    <p id="bb-modal-desc"></p>
+    <ul id="bb-modal-items"></ul>
+  </div>
+</div>
+
+<style>
+:root{
+  --bb-ink:#121110;
+  --bb-charcoal:#1c1a17;
+  --bb-charcoal-2:#242019;
+  --bb-gold:#c9a24a;
+  --bb-gold-light:#e6c877;
+  --bb-cream:#f3ece0;
+  --bb-muted:#9a9184;
+  --bb-border:rgba(201,162,74,0.22);
+}
+
+.bb-feature-split-media{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  font-family:'Inter','Segoe UI',sans-serif;
+}
+
+.bb-orbit-wrapper{
+  position:relative;
+  width:min(90vw, 420px);
+  aspect-ratio:1/1;
+}
+
+#bb-neural-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.bb-center-hub{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:19%; height:19%;
+  min-width:56px; min-height:56px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, var(--bb-charcoal-2), var(--bb-ink));
+  border:1px solid var(--bb-gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:5;
+  box-shadow:0 0 0 1px rgba(201,162,74,0.15), 0 6px 18px rgba(0,0,0,0.5);
+}
+.bb-hub-icon{
+  width:42%; height:42%;
+  color:var(--bb-gold-light);
+}
+.bb-pulse-ring{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1px solid var(--bb-gold);
+  opacity:0;
+  animation:bb-pulse 3s ease-out infinite;
+}
+.bb-delay-1{ animation-delay:1.5s; }
+@keyframes bb-pulse{
+  0%{ transform:scale(1); opacity:0.6; }
+  100%{ transform:scale(2.4); opacity:0; }
+}
+
+/* Cards: posicionados por % (--x / --y), sempre retos, nunca rotacionam */
+.bb-orbit-item{
+  position:absolute;
+  top:var(--y);
+  left:var(--x);
+  transform:translate(-50%,-50%);
+  z-index:3;
+}
+.bb-orbit-card{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--bb-charcoal);
+  border:1px solid var(--bb-border);
+  border-radius:12px;
+  padding:clamp(8px,2.2vw,12px) clamp(10px,2.6vw,16px);
+  width:max-content;
+  max-width:34vw;
+  cursor:pointer;
+  transition:border-color .2s ease, transform .2s ease, background .2s ease;
+}
+.bb-orbit-card:hover,
+.bb-orbit-card:focus-visible{
+  border-color:var(--bb-gold);
+  background:var(--bb-charcoal-2);
+  transform:scale(1.05);
+  outline:none;
+}
+.bb-card-icon{
+  flex:0 0 auto;
+  width:clamp(22px,6vw,30px);
+  height:clamp(22px,6vw,30px);
+  border-radius:8px;
+  background:rgba(201,162,74,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.bb-card-icon svg{
+  width:55%; height:55%;
+  color:var(--bb-gold-light);
+}
+.bb-card-text{
+  font-size:clamp(10px,2.6vw,12.5px);
+  line-height:1.3;
+  font-weight:600;
+  color:var(--bb-cream);
+  white-space:nowrap;
+}
+.bb-card-arrow{
+  display:none;
+  color:var(--bb-muted);
+  font-size:16px;
+  margin-left:2px;
+}
+@media (min-width:520px){
+  .bb-card-arrow{ display:inline; }
+}
+
+@media (max-width:420px){
+  .bb-orbit-card{ gap:6px; border-radius:10px; }
+  .bb-card-text{ white-space:normal; max-width:20vw; }
+}
+
+.bb-modal-overlay{
+  display:none;
+  position:fixed; inset:0;
+  background:rgba(10,9,8,0.72);
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  padding:20px;
+}
+.bb-modal-overlay.bb-active{ display:flex; }
+.bb-modal{
+  position:relative;
+  background:var(--bb-charcoal);
+  border:1px solid var(--bb-border);
+  border-radius:14px;
+  max-width:360px;
+  width:100%;
+  padding:28px 24px;
+  font-family:'Inter','Segoe UI',sans-serif;
+}
+.bb-modal h3{ margin:0 0 10px; color:var(--bb-gold-light); font-size:18px; font-weight:700; }
+.bb-modal p{ margin:0 0 16px; color:var(--bb-muted); font-size:13.5px; line-height:1.55; }
+.bb-modal ul{ margin:0; padding:0; list-style:none; }
+.bb-modal li{ color:var(--bb-cream); font-size:13px; padding:8px 0; border-top:1px solid var(--bb-border); display:flex; gap:8px; }
+.bb-modal li::before{ content:'✓'; color:var(--bb-gold); flex:0 0 auto; }
+.bb-modal-close{ position:absolute; top:14px; right:16px; background:none; border:none; color:var(--bb-muted); font-size:22px; cursor:pointer; line-height:1; }
+.bb-modal-close:hover{ color:var(--bb-cream); }
+</style>
+
+<script>
+function bbOpenModal(el){
+  document.getElementById('bb-modal-title').textContent = el.dataset.title;
+  document.getElementById('bb-modal-desc').textContent = el.dataset.desc;
+  var list = document.getElementById('bb-modal-items');
+  list.innerHTML = '';
+  el.dataset.items.split('|').forEach(function(txt){
+    var li = document.createElement('li');
+    li.textContent = txt;
+    list.appendChild(li);
+  });
+  document.getElementById('bb-modal-overlay').classList.add('bb-active');
+}
+function bbCloseModal(e){
+  if(e.target.id === 'bb-modal-overlay' || e.target.classList.contains('bb-modal-close')){
+    document.getElementById('bb-modal-overlay').classList.remove('bb-active');
+  }
+}
+
+(function(){
+  var wrapper = document.getElementById('bb-orbit-wrapper');
+  var canvas = document.getElementById('bb-neural-canvas');
+  var ctx = canvas.getContext('2d');
+  var items = Array.prototype.slice.call(wrapper.querySelectorAll('.bb-orbit-item'));
+  var W = 0, H = 0, cx = 0, cy = 0;
+  var dpr = window.devicePixelRatio || 1;
+  var targets = [];
+
+  function resize(){
+    var rect = wrapper.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx = W/2; cy = H/2;
+    targets = items.map(function(el){
+      var xPct = parseFloat(getComputedStyle(el).getPropertyValue('--x'));
+      var yPct = parseFloat(getComputedStyle(el).getPropertyValue('--y'));
+      return { x: W*xPct/100, y: H*yPct/100 };
+    });
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+
+    ctx.strokeStyle = 'rgba(201,162,74,0.22)';
+    ctx.lineWidth = 1;
+    targets.forEach(function(p){
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+    });
+
+    for(var i=0;i<targets.length;i++){
+      for(var j=i+1;j<targets.length;j++){
+        var dx = targets[i].x-targets[j].x, dy = targets[i].y-targets[j].y;
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < W*0.42){
+          ctx.strokeStyle = 'rgba(201,162,74,0.08)';
+          ctx.beginPath();
+          ctx.moveTo(targets[i].x, targets[i].y);
+          ctx.lineTo(targets[j].x, targets[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    ctx.fillStyle = 'rgba(230,200,119,0.6)';
+    targets.forEach(function(p, i){
+      var pulse = Math.sin(t*0.002 + i)*0.5+0.5;
+      var midX = cx + (p.x-cx)*0.55, midY = cy + (p.y-cy)*0.55;
+      ctx.beginPath();
+      ctx.arc(midX, midY, 1.4 + pulse*1.2, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+
+</body>
+</html>
