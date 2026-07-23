@@ -36,7 +36,7 @@ const ServiceIcon = ({ icon }: { icon: string }) => {
   return <ScissorsIcon className="w-4.5 h-4.5 text-electric" />;
 };
 
-const greet = () => {
+const getGreeting = () => {
   const h = new Date().getHours();
   if (h < 12) return 'Bom dia 👋';
   if (h < 18) return 'Boa tarde 👋';
@@ -55,6 +55,7 @@ export default function HomePage() {
   const [activeStory, setActiveStory] = useState<any>(null);
   const [selectedService, setSelectedService] = useState<any>(null);
   const [quickBookBarber, setQuickBookBarber] = useState<any>(null);
+  const [greeting, setGreeting] = useState<string>('');
   
   const controls = useAnimation();
   const router = useRouter();
@@ -143,6 +144,7 @@ export default function HomePage() {
       if (results[4] && results[4].data) setNextBooking(results[4].data);
     };
     load();
+    setGreeting(getGreeting());
   }, []);
 
   const firstName = profile?.full_name?.split(' ')[0] || 'visitante';
@@ -171,7 +173,7 @@ export default function HomePage() {
       <div className="px-4 pt-6">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <p className="text-zinc-400 text-sm font-medium">{greet()}</p>
+            <p className="text-zinc-400 text-sm font-medium">{greeting}</p>
             <h1 className="text-3xl font-black mt-1 tracking-tight text-white">
               {firstName}
             </h1>
